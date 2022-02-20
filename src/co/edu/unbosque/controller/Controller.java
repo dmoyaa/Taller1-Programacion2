@@ -16,7 +16,7 @@ public class Controller {
 	}
 	
 	public void funcionar() {
-		v.mostrarMensaje(tc.mostrarresultados());;
+		v.mostrarMensaje(tc.countByStockCode(v.leerDato("Please enter the stock code of the product:"))); 
 	}
 	
 

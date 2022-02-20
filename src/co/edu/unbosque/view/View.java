@@ -8,4 +8,10 @@ public class View {
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
 
+	public String leerDato(String mensaje) {
+		String respuesta="";
+		respuesta= JOptionPane.showInputDialog(mensaje);
+		return respuesta;
+	}
+	
 }

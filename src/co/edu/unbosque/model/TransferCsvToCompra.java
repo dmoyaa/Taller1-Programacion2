@@ -25,6 +25,22 @@ public class TransferCsvToCompra {
         }
         return total;
     }
+    
+    public String countByStockCode (String StockCode) {
+    	String respuesta = "The StockCode does not exist in the shopping list.";
+    	int unidades = 0;
+        listaCompras = rc.ReadFromPath("csv/data.csv");
+    	for (int i = 0; i < listaCompras.size(); i++) {
+    		
+    		if(listaCompras.get(i).getStockCode().equals(StockCode)) {
+    			unidades += listaCompras.get(i).getQuantity();
+    			respuesta = "The product '"+listaCompras.get(i).getDescription()+"' has been sold: "
+    					+ unidades + " times.";
+    		}   		
+		}
+    	
+    	return respuesta;
+    }
 
     public ArrayList<Compra> buscarPorDescripcion(String search, boolean order, int initMonth, int endMonth) {
         ArrayList<Compra> comprasEncontradas = new ArrayList<>();
@@ -51,15 +67,12 @@ public class TransferCsvToCompra {
         return comprasEncontradas;
     }
 
-    public String mostrarresultados() {
-        String respuesta = "";
-        listaCompras = rc.ReadFromPath("csv/data.csv");
-        respuesta = listaCompras.get(541908).toString();
-//		for (int i = 0; i < listaCompras.size(); i++) {
-//			respuesta= listaCompras.get(1).toString();
-//		}
-        return respuesta;
-    }
+//    public String mostrarresultados() {
+//        String respuesta = "";
+//        listaCompras = rc.ReadFromPath("csv/data.csv");
+//        respuesta = listaCompras.get(1).toString();
+//        return respuesta;
+//    }
 
     public ArrayList<Compra> agregarCompra(Compra c) {
         listaCompras.add(c);
