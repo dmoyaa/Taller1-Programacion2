@@ -17,7 +17,7 @@ public class TransferCsvToCompra {
 
     // punto 2
 
-    public double totalVentas() {
+    public double sumTotalSales() {
         double total = 0.0;
         for (Compra compra : listaCompras) {
             double aux = compra.getQuantity() * compra.getUnitPrice();
@@ -42,7 +42,7 @@ public class TransferCsvToCompra {
     	return respuesta;
     }
 
-    public ArrayList<Compra> buscarPorDescripcion(String search, boolean order, int initMonth, int endMonth) {
+    public ArrayList<Compra> searchForDescription(String search, boolean order, int initMonth, int endMonth) {
         ArrayList<Compra> comprasEncontradas = new ArrayList<>();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar calendar = new GregorianCalendar();
@@ -74,7 +74,7 @@ public class TransferCsvToCompra {
 //        return respuesta;
 //    }
 
-    public ArrayList<Compra> agregarCompra(Compra c) {
+    public ArrayList<Compra> addSales(Compra c) {
         listaCompras.add(c);
         return listaCompras;
 

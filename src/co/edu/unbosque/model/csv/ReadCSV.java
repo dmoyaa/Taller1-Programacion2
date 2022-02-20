@@ -64,7 +64,7 @@ public class ReadCSV {
 				String CI = nextline[6];
 				String Cou = nextline[7];
 				Compra c = new Compra(IN, SC , Des, Qua, ID, UP, CI, Cou);
-				tc.agregarCompra(c);
+				tc.addSales(c);
 				}catch(Exception e) {
 				}
 			} while((nextline != null));
