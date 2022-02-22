@@ -18,6 +18,7 @@ public class TransferCsvToCompra {
     // punto 2
 
     public double sumTotalSales() {
+    	listaCompras = rc.ReadFromPath("csv/data.csv");
         double total = 0.0;
         for (Compra compra : listaCompras) {
             double aux = compra.getQuantity() * compra.getUnitPrice();
