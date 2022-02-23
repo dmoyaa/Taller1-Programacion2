@@ -17,43 +17,22 @@ import java.util.List;
 
 public class ReadCSV {
 
+	/*
+	 * Método que accede al archivo csv y lee su contenido
+	 */
+	
 	public ArrayList<Compra> ReadFromPath(String localpath){
 
 		TransferCsvToCompra tc = new TransferCsvToCompra();
 
 		try {
-			//			URI uri = ClassLoader.getSystemResource(localpath).toURI();
-			//			Path path = Paths.get(uri);
-			//			HeaderNameBaseMappingStrategy ms = new HeaderColumnNameMappingStrategy();
-			//			ms.setType(Compra.class);
-			//			System.out.println("estoy leyendo");
-			//
-			//
-			//			Reader reader = Files.newBufferedReader(path);
-			//			CsvToBean cb = new CsvToBeanBuilder(reader).withType(Compra.class)
-			//					.withMappingStrategy(ms).withSeparator(';').build();
-			//
-			//			TransferCsvToCompra tc = new TransferCsvToCompra();
-			//			tc.setCsvlist(cb.parse());
-			//			reader.close();
-			//
-			//			return tc.getCsvlist();
-
+		
 			CSVReader reader = new CSVReader(new FileReader(localpath));
 			String[]nextline = null; 
-//			while ((nextline=reader.readNext()) != null) {
 			nextline=reader.readNext();
 			do {
 				nextline=reader.readNext();
 				
-//				System.out.println(nextline[0]);
-//				System.out.println(nextline[1]);
-//				System.out.println(nextline[2]);
-//				System.out.println(nextline[3]);
-//				System.out.println(nextline[4]);
-//				System.out.println(nextline[5]);
-//				System.out.println(nextline[6]);
-//				System.out.println(nextline[7]);
 				try {
 				String IN=nextline[0]; 
 				String SC= nextline[1];
@@ -69,12 +48,6 @@ public class ReadCSV {
 				}
 			} while((nextline != null));
 
-
-//					for (int i = 0; i < nextline.length; i++) {
-//						System.out.println(nextline[i]);
-//					}
-				
-//		}
 			reader.close();
 		}
 

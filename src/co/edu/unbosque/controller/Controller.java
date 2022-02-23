@@ -21,14 +21,13 @@ public class Controller {
 			int nMenu = v.showmenu();
 			v.setMenu(nMenu);
 			switch(v.getMenu()) {
-			case 1: v.mostrarMensaje("This is the total  sales of the store : " + tc.sumTotalSales());
-				
+			case 1: v.mostrarMensaje("This is the total  sales of the store : " + tc.sumTotalSales());	
 				break;
-			case 2: //punto3
+			case 2: v.mostrarMensaje("The detail of a requested invoice is : " + tc.findByInvoiceNo(v.leerDato("")));
 				break;
 			case 3: v.mostrarMensaje(tc.countByStockCode(v.leerDato("Please enter the stock code of the product:"))); 
 				break;
-			case 4: //punto5
+			case 4: System.out.println(tc.avgMonthSales(true));
 				break;
 			case 5: //punto6
 				break;

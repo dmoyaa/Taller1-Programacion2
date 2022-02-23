@@ -2,6 +2,10 @@ package co.edu.unbosque.model;
 
 public class Compra {
 	
+	/*
+	 * Atributos del csv 
+	 */
+	
 	private String InvoiceNo;
 	private String StockCode;
 	private String Description;
@@ -10,6 +14,10 @@ public class Compra {
 	private double UnitPrice;
 	private String CustomerID;
 	private String Country;
+	
+	/*
+	 * Todos los atributos que contiene el método de compra, requeridos en otros métodos
+	 */
 	
 	public Compra(String IN, String SC, String Des, int Qua, String ID, double UP, String CI,
 			String Cou) {
@@ -99,8 +107,10 @@ public class Compra {
 		Country = country;
 	}
 
-
-
+	/*
+	 * Imprime los atributos del csv
+	 */
+	
 	@Override
 	public String toString() {
 		return "Compra [InvoiceNo=" + InvoiceNo + ", StockCode=" + StockCode + ", Description=" + Description

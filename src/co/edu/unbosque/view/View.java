@@ -6,19 +6,35 @@ public class View {
 	
 	private int menu;
 	
+	/*
+	 * Método constructor
+	 */
+	
 	public View() {
 		menu = -1;
 	}
+	
+	/*
+	 * Método que muestra por JOption los mensajes que hayamos puesto
+	 */
 	
 	public void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
 
+	/*
+	 * Método que pide un dato tipo String
+	 */
+	
 	public String leerDato(String mensaje) {
 		String respuesta="";
 		respuesta= JOptionPane.showInputDialog(mensaje);
 		return respuesta;
 	}
+	
+	/*
+	 * Método de opciones de la tienda
+	 */
 	
 	public int showmenu() {
 		
