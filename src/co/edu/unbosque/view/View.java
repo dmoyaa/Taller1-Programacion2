@@ -46,8 +46,7 @@ public class View {
 				+"\n 3. Contar la cantidad de unidades vendidas para un stock solicitado."
 				+"\n 4. Retornar el promedio de ventas mensuales con la opción de agrupar por país."
 				+"\n 5. Retornar la lista de descripciones que coinciden parcialmente con el criterio"
-				+ " de búsqueda incluyendo la cantidad de unidades vendidas con la opción de ordenar "
-				+ "por el producto más vendido y filtrar por rango de meses."
+				+ " de búsqueda incluyendo la cantidad de unidades vendidas , ordenadas de menor a mayor. "
 				+"\n 0. Salir.");
 		
 		respuesta=Integer.parseInt(mensaje);

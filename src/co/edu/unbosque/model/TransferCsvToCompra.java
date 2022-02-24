@@ -70,21 +70,32 @@ public class TransferCsvToCompra {
         return arraylist;
     }
     
-    /*
-     * 
+    /*Lee el csv y recorre el ArrayList y según lo ingresado muestra la lista de compras con 
+     * coincidencias y la ordena de menor a mayor , fue elaborado con la ayuda de compañeros del aula y múltiples recursos informáticos  
+     * @param search:String Producto a buscar y enlistar 
+     * @return Busqueda de producto y lista ordenada 
      */
     
     public ArrayList<Compra> searchForDescription(String search, boolean order, int initMonth, int endMonth) {
+    	listaCompras = rc.ReadFromPath("csv/data.csv");
         ArrayList<Compra> comprasEncontradas = new ArrayList<>();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar calendar = new GregorianCalendar();
+        System.out.println(listaCompras.size());
 
         try {
-            for (Compra compra : listaCompras) {
+            for (int i =0;i<listaCompras.size();i++) {
+            	Compra compra=listaCompras.get(i);
+            	
+//        	System.out.println("1");
                 String descripcionActual = compra.getDescription();
                 Date date = simpleDateFormat.parse(compra.getInvoiceDate());
                 calendar.setTime(date);
                 int mes = calendar.get(Calendar.MONTH);
+    /*convierte y permite que el dato ingresado pueda estar  en mayusculas o minusculas
+     *           
+     */
+                search = search.toUpperCase();
 
                 if (descripcionActual.contains(search)) {
                     if (mes >= initMonth && mes <= endMonth) {
@@ -95,9 +106,50 @@ public class TransferCsvToCompra {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        System.out.println("================================================================");
+		System.out.println("================================================================");
 
+		
+				Collections.sort(listaCompras, new Comparator<Compra>() {
+		            @Override
+		            public int compare(Compra o1, Compra o2) {
+		                return new Integer((o2.getQuantity())).compareTo(new Integer(o1.getQuantity()));
+		            }
+		            
+		        });
+				try {
+					for (Compra compra : listaCompras) {
+						String descripcionActual = compra.getDescription();
+						Date date = simpleDateFormat.parse(compra.getInvoiceDate());
+						calendar.setTime(date);
+						int mes = calendar.get(Calendar.MONTH);
+						
+	/*convierte y permite que el dato ingresado pueda estar  en mayusculas o minusculas
+	*           
+ */					
+						search = search.toUpperCase();
+						if (descripcionActual.contains(search)) {
+							if (mes >= initMonth && mes <= endMonth) {
+								comprasEncontradas.add(compra);
+							}
+						}
+					}
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
         return comprasEncontradas;
     }
+    public String mostrarresultados() {
+		String respuesta = "";
+		listaCompras = rc.ReadFromPath("csv/data.csv");
+		respuesta = listaCompras.get(1).toString();
+		return respuesta;
+	}
+ 
+    
 
     /*
      * Este método fue desarrollado con la colaboración de nuestros compañeros de clase, no es de nuestra autoria
@@ -163,5 +215,14 @@ public class TransferCsvToCompra {
     public void setListaCompras(ArrayList<Compra> listaCompras) {
         this.listaCompras = listaCompras;
     }
+
+	public ReadCSV getRc() {
+		return rc;
+	}
+
+	public void setRc(ReadCSV rc) {
+		this.rc = rc;
+	}
+    
 
 }
